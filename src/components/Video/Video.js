@@ -1,7 +1,7 @@
-import styles from './_Video.sass'
-
 import React from 'react'
 import PropTypes from 'prop-types'
+
+import styles from './_Video.sass'
 import secToMin from '../../helpers/string/secToMin'
 import { getCaption } from '../../helpers/video/getCaption'
 import getLevel from '../../helpers/video/getLevel'
@@ -20,7 +20,7 @@ const Video = (props) => {
 
   return (
     <li className={styles['video-item']}>
-      <a title={title} href='javascript:;' onClick={e => { e.preventDefault() }}>
+      <a href='javascript:;' onClick={e => { e.preventDefault() }}>
         <div className={styles['video-thumbnail']}>
           <img src='./assets/images/blank.png' alt={title} style={{backgroundImage: `url(${thumbnail})`}} />
           <div className={styles['video-duration']}>{secToMin(duration)}</div>
@@ -48,7 +48,8 @@ Video.propTypes = {
   duration: PropTypes.number.isRequired,
   publish: PropTypes.number.isRequired,
   level: PropTypes.number.isRequired,
-  captions: PropTypes.array.isRequired
+  captions: PropTypes.array.isRequired,
+  lang: PropTypes.string
 }
 
 export default Video

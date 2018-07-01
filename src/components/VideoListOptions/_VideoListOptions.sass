@@ -35,6 +35,10 @@
   color: $color-font-gray
   ul
     margin: 0 0 6px
+  li + li
+    margin-left: 8px
+    @media screen and (max-width: 400px)
+      margin-left: 0
   a
     display: block
     color: $color-font-gray
@@ -43,9 +47,6 @@
     padding: 4px 8px
     text-decoration: none
     +border-radius(4px)
-    + a
-      margin-left: 8px
-  
     &.active
       color: $color-font-white
       background-color: $color-background-blue

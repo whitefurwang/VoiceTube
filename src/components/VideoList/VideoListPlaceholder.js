@@ -1,6 +1,6 @@
-import styles from './_VideoList.sass'
-
 import React, { Component } from 'react'
+
+import styles from './_VideoList.sass'
 import VideoPlaceholder from '../Video/VideoPlaceholder'
 
 class VideoListPlaceholder extends Component {

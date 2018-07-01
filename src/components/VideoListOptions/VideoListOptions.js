@@ -1,6 +1,6 @@
-import styles from './_VideoListOptions.sass'
-
 import React from 'react'
+
+import styles from './_VideoListOptions.sass'
 import VideoListSort from './VideoListSort'
 import VideoListFilter from './VideoListFilter'
 

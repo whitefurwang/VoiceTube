@@ -1,6 +1,6 @@
-import styles from './_VideoListOptions.sass'
-
 import React from 'react'
+
+import styles from './_VideoListOptions.sass'
 import { videoListFilterItems } from '../../helpers/video/videoListFilter'
 
 const VideoListFilter = (props) => {

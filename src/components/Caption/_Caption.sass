@@ -1,0 +1,27 @@
+@import '~compass-mixins/lib/compass/_css3.scss'
+@import '../../helpers/style/variables'
+
+.caption
+  text-align: center
+  margin: 36px 0
+  .caption-title
+    font-size: 14px
+    margin-bottom: 8px
+  ul
+    list-style: none
+    padding-left: 0
+    margin: 0
+    font-size: 12px
+  li
+    display: inline-block
+  a
+    display: block
+    color: $color-font-gray
+    font-size: 12px
+    line-height: 16px
+    padding: 4px 8px
+    text-decoration: none
+    +border-radius(4px)
+    &.active
+      background-color: $color-font-gray
+      color: $color-font-white

@@ -1,14 +1,23 @@
-import styles from './_App.sass'
-import stylesVideoList from '../VideoList/_VideoList.sass'
-
 import React, { Component } from 'react'
 import request from 'superagent'
+import Cookies from 'js-cookie'
 
+import styles from './_App.sass'
+import stylesVideoList from '../VideoList/_VideoList.sass'
 import VideoListOptions from '../VideoListOptions/VideoListOptions'
 import VideoListPlaceholder from '../VideoList/VideoListPlaceholder'
 import VideoList from '../VideoList/VideoList'
+import Caption from '../Caption/Caption'
 
-const localLang = window.localStorage.getItem('videoAppLang')
+window.videoApp = {
+  default: {
+    lang: 'cht',
+    sort: 'PUBLISH',
+    filter: 'FILTER_UNSET'
+  }
+}
+
+const appDefault = window.videoApp.default
 const sessionSort = window.sessionStorage.getItem('videoSort')
 const sessionFilter = window.sessionStorage.getItem('videoFilter')
 
@@ -17,9 +26,9 @@ class App extends Component {
     super(props)
 
     this.state = {
-      lang: localLang || 'cht',
-      sort: sessionSort || 'PUBLISH',
-      filter: sessionFilter || 'FILTER_UNSET',
+      lang: Cookies.get('lang') || appDefault.lang,
+      sort: sessionSort || appDefault.sort,
+      filter: sessionFilter || appDefault.filter,
       videos: [],
       isLoaded: false,
       hasError: false
@@ -27,6 +36,7 @@ class App extends Component {
 
     this.setVideoListSort = this.setVideoListSort.bind(this)
     this.setVideoListFilter = this.setVideoListFilter.bind(this)
+    this.setCaption = this.setCaption.bind(this)
   }
 
   getVideoData () {
@@ -59,6 +69,10 @@ class App extends Component {
     window.sessionStorage.setItem('videoFilter', filter)
   }
 
+  setCaption (lang) {
+    this.setState({ lang: lang })
+  }
+
   render () {
     const { lang, sort, filter, videos } = this.state
     return (
@@ -84,6 +98,13 @@ class App extends Component {
             sort={sort}
             filter={filter}
             videos={videos}
+          />
+        }
+        {
+          this.state.isLoaded &&
+          <Caption
+            lang={lang}
+            setCaption={this.setCaption}
           />
         }
       </div>

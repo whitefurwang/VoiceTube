@@ -1,12 +1,13 @@
-import styles from'./_VideoList.sass'
-
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+
+import styles from'./_VideoList.sass'
 import Video from '../Video/Video'
 import getNowVideos from '../../helpers/video/getNowVideos'
 
 class VideoList extends Component {
   static propTypes = {
+    lang: PropTypes.string.isRequired,
     videos: PropTypes.arrayOf(PropTypes.shape({
       id: PropTypes.number.isRequired,
       thumbnail: PropTypes.string.isRequired,
